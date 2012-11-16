@@ -1,0 +1,31 @@
+<% if @project.errors.any? %>
+    <div class="alert alert-error" align="center">
+      <a class="close" data-dismiss="alert"> × </a>
+      <% @project.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+      <% end %>
+    </div>
+<%end%>
+<div class="row">
+  <div class="span5 offset3" style="border: 1px solid #999;">
+    <%= form_tag "/projects/#{@project.id}/deliver_mail",:method => "GET" , :class => "form-horizontal" do  %>
+        <div id="legend" style="text-align: center">
+          <legend>Send Mail</legend>
+        </div>
+        <div class="control-group">
+          <div class="control-label">
+            Email
+          </div>
+          <div class="controls">
+            <%= text_area_tag :email, params[:email], :required => true, :rows => 3, :cols => 30 %>
+            <span class="help-inline">(eg: example@weboniselab.com, example1@weboniselab.com....)</span>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <%= submit_tag "Send Mail", :class => "btn btn-success" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

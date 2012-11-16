@@ -1,0 +1,8 @@
+<% if current_admin %>
+    <ul class="nav">
+      <li><%= link_to "Project", projects_path %></li>
+    </ul>
+    <ul class="nav pull-right">
+      <li ><%= link_to "Logout", logout_path %></li>
+    </ul>
+<% end %>

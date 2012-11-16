@@ -1,0 +1,9 @@
+require 'rubygems' 
+require 'net/ssh' 
+Net::SSH.start('stage.checkinforgood.com', 'amit', :password => 'Sef9Z3CU') do |ssh|
+   result = ssh.exec('tail -f /var/www/checkin4good-development/current/log/production.log')
+   puts result
+end
+
+
+

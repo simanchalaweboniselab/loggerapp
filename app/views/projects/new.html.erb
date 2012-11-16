@@ -1,0 +1,53 @@
+<% if @project.errors.any? %>
+    <div class="alert alert-error" align="center">
+      <a class="close" data-dismiss="alert"> × </a>
+      <% @project.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+      <% end %>
+    </div>
+<%end%>
+<div class="row">
+  <div class="span5 offset4" style="border: 1px solid #999;">
+    <%= form_tag "/projects/create_encrypt_file", :method => "GET", :class => "form-horizontal" do %>
+        <div id="legend" style="text-align: center">
+          <legend>Create Project</legend>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Name</label>
+          <div class="controls">
+            <%= text_field_tag :project_name, params[:project_name], :required => true %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">User Name</label>
+          <div class="controls">
+            <%= text_field_tag :user_name, params[:user_name], :required => true %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Password</label>
+          <div class="controls">
+            <%= password_field_tag :password, params[:password], :required => true %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Host</label>
+          <div class="controls">
+            <%= text_field_tag :host, params[:host], :required => true %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Log Path</label>
+          <div class="controls">
+            <%= text_field_tag :log_path, params[:log_path], :required => true %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <%= submit_tag "Create Project", :class => "btn btn-success" %>
+            <%= link_to "Cancel",projects_path, :class => "btn" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
