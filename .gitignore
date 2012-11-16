@@ -2,7 +2,6 @@
 
 # Ignore databse config
 /public/images/
-/config/database.yml
 /vendor/bundle/*
 
 # Ignore the default SQLite database.
